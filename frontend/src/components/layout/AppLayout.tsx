@@ -555,69 +555,7 @@ export const AppLayout: React.FC = () => {
               </button>
             </div>
 
-            {/* ══════════════════════════════════════════════════════════════
-                🌐 REGIONAL LANGUAGES (DEDICATED CHOOSING ICONS)
-               ══════════════════════════════════════════════════════════════ */}
-            <div className="pt-2 space-y-1.5 border-t border-white/10">
-              <div className="px-3 py-1 text-[10px] font-mono font-semibold text-gray-400 uppercase tracking-wider flex items-center justify-between">
-                <span>CHOOSE LANGUAGE</span>
-                <Globe className="w-3 h-3 text-accent" />
-              </div>
 
-              {/* Dedicated Tamil Choosing Icon Button */}
-              <button
-                onClick={() => {
-                  handleNavigate('home');
-                  setTimeout(() => {
-                    window.dispatchEvent(new CustomEvent('nexora:select-language', { detail: 'tamil' }));
-                  }, 50);
-                }}
-                className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-gray-200 hover:text-white bg-gradient-to-r from-amber-950/40 to-red-950/30 hover:from-amber-900/60 hover:to-red-900/50 border border-amber-500/30 hover:border-amber-400/60 transition-all group shadow-sm active:scale-98"
-                title="Choose Tamil (தமிழ்) - Kollywood, Anirudh & Rahman Hits"
-              >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base p-1 rounded-lg bg-amber-500/20 border border-amber-500/30 group-hover:scale-110 transition-transform">
-                    🪕
-                  </span>
-                  <div className="text-left">
-                    <span className="font-bold block text-amber-300 text-xs">Tamil</span>
-                    <span className="text-[10px] font-mono text-gray-400 group-hover:text-amber-200/80 transition-colors">
-                      தமிழ் • Kollywood
-                    </span>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-amber-500/25 text-amber-200 border border-amber-500/40">
-                  தமிழ்
-                </span>
-              </button>
-
-              {/* Dedicated Telugu Choosing Icon Button */}
-              <button
-                onClick={() => {
-                  handleNavigate('home');
-                  setTimeout(() => {
-                    window.dispatchEvent(new CustomEvent('nexora:select-language', { detail: 'telugu' }));
-                  }, 50);
-                }}
-                className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-gray-200 hover:text-white bg-gradient-to-r from-orange-950/40 to-amber-950/30 hover:from-orange-900/60 hover:to-amber-900/50 border border-orange-500/30 hover:border-orange-400/60 transition-all group shadow-sm active:scale-98"
-                title="Choose Telugu (తెలుగు) - Tollywood, Keeravani, Thaman & DSP Mass Anthems"
-              >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base p-1 rounded-lg bg-orange-500/20 border border-orange-500/30 group-hover:scale-110 transition-transform">
-                    🪘
-                  </span>
-                  <div className="text-left">
-                    <span className="font-bold block text-orange-300 text-xs">Telugu</span>
-                    <span className="text-[10px] font-mono text-gray-400 group-hover:text-orange-200/80 transition-colors">
-                      తెలుగు • Tollywood
-                    </span>
-                  </div>
-                </div>
-                <span className="px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-orange-500/25 text-orange-200 border border-orange-500/40">
-                  తెలుగు
-                </span>
-              </button>
-            </div>
 
             {/* ══════════════════════════════════════════════════════════════
                 ✨ QUICK VIBES & MOOD MIXES
