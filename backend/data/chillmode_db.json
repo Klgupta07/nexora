@@ -1,0 +1,83 @@
+{
+  "users": [],
+  "osintHistory": [],
+  "playlists": [
+    {
+      "id": "pl_init_1793686577794",
+      "userId": "demo_user",
+      "name": "Cyberpunk Investigation Mix",
+      "description": "High adrenaline synthwave and glitch beats for reconnaissance operations.",
+      "isPublic": true,
+      "tracks": [
+        {
+          "id": "lang-hin-1",
+          "title": "Kesariya (Acoustic Sufi Raga)",
+          "artist": "Arijit Singh Tribute",
+          "album": "Brahmastra Soul Sessions",
+          "duration": 215,
+          "audioUrl": "https://cdn.pixabay.com/download/audio/2022/04/27/audio_3047d77e4a.mp3?filename=spirit-blossom-15285.mp3",
+          "coverUrl": "https://images.unsplash.com/photo-1544717305-2782549b5136?w=600&auto=format&fit=crop&q=80",
+          "genre": "Bollywood / Sufi",
+          "language": "Hindi",
+          "license": "Creative Commons 0 / Royalty Free",
+          "source": "Nexora Multi-Lingual Stream"
+        },
+        {
+          "id": "lang-hin-2",
+          "title": "Raataan Lambiyan (Midnight Lofi Mix)",
+          "artist": "Tanishk & Asees Tribute",
+          "album": "Shershaah Acoustic Horizon",
+          "duration": 230,
+          "audioUrl": "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3",
+          "coverUrl": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80",
+          "genre": "Romantic Bollywood",
+          "language": "Hindi",
+          "license": "Creative Commons 0 / Royalty Free",
+          "source": "Nexora Multi-Lingual Stream"
+        },
+        {
+          "id": "lang-hin-3",
+          "title": "Tum Hi Ho (Soulful Sitar & Grand Piano)",
+          "artist": "Mithoon Soundscapes",
+          "album": "Aashiqui Orchestral",
+          "duration": 248,
+          "audioUrl": "https://cdn.pixabay.com/download/audio/2022/03/10/audio_c35043a568.mp3?filename=reflected-light-14772.mp3",
+          "coverUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600&auto=format&fit=crop&q=80",
+          "genre": "Bollywood / Classical Fusion",
+          "language": "Hindi",
+          "license": "Creative Commons 0 / Royalty Free",
+          "source": "Nexora Multi-Lingual Stream"
+        },
+        {
+          "id": "lang-hin-4",
+          "title": "Apna Bana Le (Cyber Romance Raga)",
+          "artist": "Sachin-Jigar Ensemble",
+          "album": "Bhediya Midnight Flow",
+          "duration": 198,
+          "audioUrl": "https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=electronic-future-beats-117997.mp3",
+          "coverUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&auto=format&fit=crop&q=80",
+          "genre": "Bollywood Pop",
+          "language": "Hindi",
+          "license": "Creative Commons 0 / Royalty Free",
+          "source": "Nexora Multi-Lingual Stream"
+        },
+        {
+          "id": "lang-hin-5",
+          "title": "Channa Mereya (Ghazal & Acoustic Fusion)",
+          "artist": "Pritam Collective",
+          "album": "Ae Dil Hai Musafir",
+          "duration": 226,
+          "audioUrl": "https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f77cb7.mp3?filename=tuesday-night-123485.mp3",
+          "coverUrl": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&auto=format&fit=crop&q=80",
+          "genre": "Sufi / Bollywood",
+          "language": "Hindi",
+          "license": "Creative Commons 0 / Royalty Free",
+          "source": "Nexora Multi-Lingual Stream"
+        }
+      ],
+      "createdAt": "2026-11-03T06:16:17.794Z",
+      "updatedAt": "2026-11-03T06:16:17.794Z"
+    }
+  ],
+  "likedTracks": []
+}

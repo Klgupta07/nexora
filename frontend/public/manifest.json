@@ -1,0 +1,19 @@
+{
+  "name": "CHILLMODE – High-Fidelity Music Streaming",
+  "short_name": "CHILLMODE",
+  "description": "High-Fidelity Multi-Platform Music Streaming with 100% Offline Audio Playback",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#8B5CF6",
+  "orientation": "portrait-primary",
+  "categories": ["music", "entertainment", "audio"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
