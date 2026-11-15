@@ -66,6 +66,12 @@ class AudioDspEngine {
     this.listeners.forEach(l => l(this.state));
   }
 
+  public resume() {
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume().catch(() => {});
+    }
+  }
+
   /**
    * Attach DSP to the HTML5 Audio element
    */

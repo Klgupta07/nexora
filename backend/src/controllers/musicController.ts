@@ -42,12 +42,19 @@ export class MusicController {
         SpotifyService.getTodaysTopHits(24).catch(() => []),
       ]);
 
+      // Ensure primary trending banner features working streams (JioSaavn hits & curated YouTube music)
+      const primaryTrending = [
+        ...jioSaavnTrending.slice(0, 10),
+        ...youtubeTrending.slice(0, 10),
+        ...trending.filter(t => t.youtubeId || (t.audioUrl && !t.audioUrl.includes('pixabay'))),
+      ];
+
       res.json({
         success: true,
         refreshedAt: new Date().toISOString(),
         isRefresh,
         data: {
-          trending,
+          trending: primaryTrending.length > 0 ? primaryTrending : trending,
           youtubeTrending,
           jioSaavnTrending,
           spotifyTopHits,
@@ -301,11 +308,11 @@ export class MusicController {
       const results = await Promise.all(fetchPromises);
       const liveTracks = results.flat();
 
-      // Merge catalog tracks first, then live streams
+      // Prioritize working live streams from JioSaavn & YouTube first
       const seen = new Set<string>();
       const combined: Track[] = [];
 
-      for (const t of catalogTracks) {
+      for (const t of liveTracks) {
         const key = (t.title + '-' + t.artist).toLowerCase();
         if (!seen.has(key) && !seen.has(t.id)) {
           seen.add(key);
@@ -314,7 +321,7 @@ export class MusicController {
         }
       }
 
-      for (const t of liveTracks) {
+      for (const t of catalogTracks) {
         const key = (t.title + '-' + t.artist).toLowerCase();
         if (!seen.has(key) && !seen.has(t.id)) {
           seen.add(key);

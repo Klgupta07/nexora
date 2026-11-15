@@ -180,11 +180,24 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       }
     };
 
+    const handleError = () => {
+      console.warn('Audio playback encountered error, checking alternate source...');
+      const current = currentTrackRef.current;
+      if (current?.youtubeId && ytPlayerRef.current && isYtReadyRef.current) {
+        try {
+          ytPlayerRef.current.loadVideoById(current.youtubeId);
+          ytPlayerRef.current.playVideo();
+          setIsPlaying(true);
+        } catch {}
+      }
+    };
+
     audio.addEventListener('timeupdate', handleTimeUpdate);
     audio.addEventListener('loadedmetadata', handleLoadedMetadata);
     audio.addEventListener('play', handlePlay);
     audio.addEventListener('pause', handlePause);
     audio.addEventListener('ended', handleEnded);
+    audio.addEventListener('error', handleError);
 
     // Load initial liked tracks & offline saved tracks
     musicApi.getLikedTracks()
@@ -207,6 +220,7 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       audio.removeEventListener('play', handlePlay);
       audio.removeEventListener('pause', handlePause);
       audio.removeEventListener('ended', handleEnded);
+      audio.removeEventListener('error', handleError);
       audio.pause();
       audio.src = '';
     };
@@ -219,13 +233,13 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       bridgeDiv = document.createElement('div');
       bridgeDiv.id = 'nexora-yt-audio-bridge';
       bridgeDiv.style.position = 'fixed';
-      bridgeDiv.style.top = '-9999px';
-      bridgeDiv.style.left = '-9999px';
-      bridgeDiv.style.width = '1px';
-      bridgeDiv.style.height = '1px';
-      bridgeDiv.style.opacity = '0';
+      bridgeDiv.style.bottom = '0px';
+      bridgeDiv.style.right = '0px';
+      bridgeDiv.style.width = '240px';
+      bridgeDiv.style.height = '140px';
+      bridgeDiv.style.opacity = '0.001';
       bridgeDiv.style.pointerEvents = 'none';
-      bridgeDiv.style.zIndex = '-999';
+      bridgeDiv.style.zIndex = '-1';
       document.body.appendChild(bridgeDiv);
     }
 
@@ -233,8 +247,8 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
       if (ytPlayerRef.current || !window.YT || !window.YT.Player) return;
       try {
         ytPlayerRef.current = new window.YT.Player('nexora-yt-audio-bridge', {
-          height: '1',
-          width: '1',
+          height: '140',
+          width: '240',
           playerVars: {
             autoplay: 1,
             controls: 0,
@@ -408,6 +422,7 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
     setCurrentTime(0);
     setDuration(track.duration || 0);
 
+    audioDspEngine.resume();
     // 2. Online playback
     if (track.youtubeId) {
       if (audioRef.current) {
@@ -448,6 +463,7 @@ export const MusicPlayerProvider: React.FC<{ children: React.ReactNode }> = ({ c
 
   const togglePlay = useCallback(() => {
     if (!currentTrack) return;
+    audioDspEngine.resume();
 
     if (isOfflinePlaying) {
       if (!audioRef.current) return;

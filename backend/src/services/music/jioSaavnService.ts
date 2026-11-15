@@ -16,6 +16,7 @@ function decodeHtmlEntities(str: string): string {
 export class JioSaavnService {
   private static userAgent =
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
+  private static streamUrlCache = new Map<string, { url: string; expiresAt: number }>();
 
   /**
    * Search JioSaavn's comprehensive library across Bollywood, Punjabi, Tamil, Telugu, and International hits
@@ -118,6 +119,13 @@ export class JioSaavnService {
    */
   public static async getStreamUrl(songId: string): Promise<string | null> {
     const cleanId = songId.replace(/^saavn-/, '');
+    
+    // Check in-memory cache for ultra-fast range requests & instant seeking
+    const cached = this.streamUrlCache.get(cleanId);
+    if (cached && Date.now() < cached.expiresAt) {
+      return cached.url;
+    }
+
     try {
       // 1. Fetch song details to retrieve encrypted_media_url
       const detailsUrl = `https://www.jiosaavn.com/api.php?__call=song.getDetails&pids=${cleanId}&_format=json&_marker=0&api_version=4&ctx=web6dot0`;
@@ -143,7 +151,10 @@ export class JioSaavnService {
       });
 
       if (tokRes.data && tokRes.data.auth_url) {
-        return tokRes.data.auth_url;
+        const authUrl = tokRes.data.auth_url;
+        // Cache token for 45 minutes
+        this.streamUrlCache.set(cleanId, { url: authUrl, expiresAt: Date.now() + 45 * 60 * 1000 });
+        return authUrl;
       }
       return null;
     } catch (err: any) {
